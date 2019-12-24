@@ -1,0 +1,915 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>A JavaScript Technical Documentation Page</title>
+    <link href="../../../css/all-pages.css" rel="stylesheet">
+    <style>
+        /* 
+
+IT IS GOING T0 TO BE RAINBOW THEMED. YEP; NO WAY AROUND IT. WHAT BETTER WAY TO DO A DRY OLD TECHNICAL DOCUMENTATION
+PAGE NO ONE IS GOING TO READ THAN WITH AN EXPLOSION OF DISCOMBOBULATING COLOR. HAHA. FROM A READBILITY PERSPECTIVE,
+THIS IS A TERRIBLE IDEA. THIS IS PRACTICE SO I DON'T CARE. 我是调皮 
+
+OH IT IS PERFECT. THESE FLATUI PALETTES HAVE 20 COLORS AND THAT IS EXACTLY HOW MANY SECTIONS I HAVE. WHICH COUNTRY 
+SHOULD I CHOOSE? 我选择哪个国家？
+
+*/
+
+        :root {
+            --highlighter-pink: #ef5777;
+            --sizzling-red: #f53b57;
+            --narenji-orange: #ffc048;
+        }
+
+
+        h1 {
+            border: 1px solid black;
+        }
+
+        /* CONTAINS EVERYTHING: NAV AND MAIN SECTIONS */
+        #container {
+            margin-top: 7rem;
+        }
+
+        /* NAVIGATION WITH LINKS TO EACH SECTION 
+A MEDIA QUERY SHOULD MOVE THIS NAV TO TOP FOR MOBILE DEVICES
+*/
+        #navbar {
+            position: fixed;
+            width: 30%;
+            float: left;
+
+        }
+
+        .page-header {
+            font-size: 3rem;
+            text-align: center;
+            height: 10%;
+        }
+
+        .nav-link {
+            display: block;
+            text-decoration: none;
+            color: black;
+            font-size: 2rem;
+            margin: 0rem auto 0rem auto;
+            text-align: center;
+            padding: .2rem;
+            border: 1px solid black;
+        }
+
+        @media (max-width: 1200px) {
+            .nav-link {
+                padding: 1rem;
+            }
+
+        }
+
+
+
+        .nav-link:hover {
+            cursor: pointer;
+            transform: scale(1.01);
+            opacity: 0.7;
+
+
+        }
+
+        /*INTRO*/
+        #Intro {
+            height: 69.3333px;
+        }
+
+
+        #intro-paragraph {
+            font-size: 1.6rem;
+            padding: .7rem;
+        }
+
+        @media (max-width: 1200px) {
+            #intro-paragraph {
+                font-size: 1.3rem;
+                padding: .7rem;
+            }
+
+        }
+
+        /* MAIN DOCUMENTATION BROKEN INTO SECTIONS*/
+        #main-doc {
+            width: 70%;
+            float: right;
+        }
+
+        .source {
+            font-size: 2rem;
+            text-align: center;
+            margin-left: 80%;
+        }
+
+        .section-header {
+            text-align: center;
+            font-size: 2.8rem;
+            padding: 2rem;
+        }
+
+        .subsection-header {
+            text-align: center;
+            font-size: 2.2rem;
+            padding: .2rem;
+
+        }
+
+        .paragraph,
+        .list {
+            font-size: 1.7rem;
+            margin: 0rem 5rem 0rem 5rem;
+            text-align: justify;
+            padding: 1rem;
+            border-radius: 1%;
+        }
+
+        .code-block {
+            display: block;
+            background-color: rgb(238, 228, 228);
+            border: 1px solid rgb(99, 97, 97);
+            padding: 2rem;
+            margin: auto;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navigation">
+            <div class="navigation__back">
+                &nbsp;
+            </div>
+            <a href="../../../../" id="page-title" class="navigation__title">
+                CromBlog
+            </a>
+            <input type="checkbox" class="navigation__checkbox" id="navigation-toggle">
+
+            <label for="navigation-toggle" class="navigation__button">
+                <span class="navigation__icon">&nbsp;</span>
+            </label>
+
+            <div class="navigation__background">&nbsp;</div>
+
+            <div class="navigation__nav">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="../../../about/" class="navigation__link">About</a></li>
+                    <li class="navigation__item"><a href="../../../blog/" class="navigation__link">Blog</a></li>
+                    <li class="navigation__item"><a href="../../../contact/" class="navigation__link">Contact</a>
+                    </li>
+                    <li class="navigation__item"><a href="../../../web-development-portfolio/"
+                            class="navigation__link">Web
+                            Development Portfolio</a></li>
+                    <li class="navigation__item"><a href="../../../writing-portfolio/" class="navigation__link">Writing
+                            Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="navbar">
+            <header>
+                <h1 class="page-header">Front End Web Developer Road Map</h1>
+            </header>
+            <!-- LINKS TO EACH SECTION -->
+            <a class="nav-link" href="#HTML_and_HTML5">HTML and HTML5</a>
+            <a class="nav-link" href="#CSS">CSS</a>
+            <a class="nav-link" href="#Responsive_Web_Design">Responsive Web Design</a>
+            <a class="nav-link" href="#JavaScript">JavaScript</a>
+            <a class="nav-link" href="#Package_Managers">Package Managers</a>
+            <a class="nav-link" href="#CSS_Pre-processors">CSS Pre-processors</a>
+            <a class="nav-link" href="#CSS_Frameworks">CSS Frameworks</a>
+            <a class="nav-link" href="#CSS_Architecture">CSS Architecture</a>
+            <a class="nav-link" href="#Build_Tools">Build Tools</a>
+            <a class="nav-link" href="#Pick_a_Framework">Pick a Framework</a>
+            <a class="nav-link" href="#CSS_in_JS">CSS in JS</a>
+            <a class="nav-link" href="#Testing_your_Apps">Testing your Apps</a>
+            <a class="nav-link" href="#Progressive_Web_Apps">Progressive Web Apps</a>
+            <a class="nav-link" href="#Type_Checkers">Type Checkers</a>
+            <a class="nav-link" href="#Server_Side_Rendering">Server Side Rendering</a>
+            <a class="nav-link" href="#Static_Site_Generators">Static Site Generators</a>
+            <a class="nav-link" href="#Desktop_Applications">Desktop Applications</a>
+            <a class="nav-link" href="#Mobile_Applications">Mobile Applications</a>
+            <a class="nav-link" href="#Web_Assembly">Web Assembly</a>
+
+        </nav>
+        <main id="main-doc">
+            <section class="intro-section" id="Intro">
+                <p id="intro-paragraph">
+                    kamranahmedse posted <a href="https://github.com/kamranahmedse/developer-roadmap"
+                        target="_blank">this</a> guide
+                    to be coming a web developer in 2019. Instead of reusing the the stock data for this practice
+                    technical
+                    page, I decided to explore the steps to becoming a front end developer that kamranahmedse lays out.
+                    I
+                    shamelessly copied the details from various websites. Section colors are set randomly to liven it
+                    up. I know a couple
+                    are too dark. <a href="https://flatuicolors.com/palette/se" target="_blank">This</a> is the palette.
+                </p>
+            </section>
+            <section class="main-section" id="HTML_and_HTML5">
+                <header>
+                    <h2 class="section-header">
+                        HTML and HTML5
+                    </h2>
+                </header>
+
+                <div class="text-box">
+
+                    <p class="paragraph">HTML (HyperText Markup Language) is a descriptive language that specifies
+                        webpage structure.</p>
+                    <p class="paragraph">
+                        In 1990, as part of his vision of the Web, Tim Berners-Lee defined the concept of hypertext,
+                        which Berners-Lee formalized the following year through a markup mainly based on SGML. The IETF
+                        began formally specifying HTML in 1993, and after several drafts released version 2.0 in 1995.
+                        In 1994 Berners-Lee founded the W3C to develop the Web. In 1996, the W3C took over the HTML work
+                        and published the HTML 3.2 recommendation a year later. HTML 4.0 was released in 1999 and became
+                        an ISO standard in 2000.
+                    </p>
+                    <p class="paragraph">At that time, the W3C nearly abandoned HTML in favor of XHTML, prompting the
+                        founding of an independent group called WHATWG in 2004. Thanks to WHATWG, work on HTML5
+                        continued: the two organizations released the first draft in 2008 and the final standard in
+                        2014.</p>
+                    <p class="paragraph">An HTML document is a plaintext document structured with elements. Elements are
+                        surrounded by matching opening and closing tags. Each tag begins and ends with angle brackets (
+                        <>). There are a few empty or void tags that cannot enclose any text, for instance <img>.</p>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Glossary/HTML"
+                        target="_blank">Source</a>
+                </div>
+
+            </section>
+            <section class="main-section" id="CSS">
+                <header>
+                    <h2 class="section-header">
+                        CSS
+                    </h2>
+                </header>
+
+                <div class="text-box">
+
+                    <p class="paragraph">
+                        Cascading Style Sheets (CSS) is a stylesheet language used to describe the
+                        presentation of a document written in HTML or XML (including XML dialects such as SVG, MathML or
+                        XHTML). CSS describes how elements should be rendered on screen, on paper, in speech, or on
+                        other media.</p>
+                    <p class="paragraph">
+                        CSS is one of the core languages of the open Web and is standardized across Web browsers
+                        according to the W3C specification. Developed in levels, CSS1 is now obsolete, CSS2.1 is a
+                        recommendation, and CSS3, now split into smaller modules, is progressing on the standardization
+                        track.
+                    </p>
+                    <p class="paragraph">
+                        The code below is the css being used to style itself.
+                    </p>
+                    <code class="code-block">
+                            .code-block{
+                                background-color: #eee;
+                                border: 1px solid #999;
+                                display: block;
+                                padding: 20px;
+                                margin:auto;
+                                width:20%;
+                            }
+                    </code>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Responsive_Web_Design">
+                <header>
+                    <h2 class="section-header">
+                        Responsive Web Design
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">For Web developers, it is now fairly common to be called upon to create a Web
+                        site or app that changes its user interface depending on the browser or device accessing the
+                        site to provide an optimized experience. One approach to this is to create different versions of
+                        your site/app for different platforms or browsers and serve them appropriately after detecting
+                        which browser or platform is looking at your site. But this is increasingly inefficient: browser
+                        sniffing is inherently error prone, and maintaining multiple copies of your code can turn out to
+                        be a nightmare.</p>
+                    <p class="paragraph">
+                        It is usually much better to create a single version of your code which doesn't care about what
+                        browser or platform is accessing the site, but instead uses feature tests to find out what code
+                        features the browser supports or what the values of certain browser features are, and then
+                        adjusts the code appropriately. This tends to be termed responsive design or adaptive design,
+                        two related but different approaches. For a discussion on the differences between the two, read
+                        Responsive design versus adaptive design.
+                    </p>
+                    <p class="paragraph">
+                        This is much more reliable, more maintainable, and more future proof. You don't get caught in
+                        the situation of having to bring out more new site versions as more new browsers and platforms
+                        come out, and adjust code as feature support in existing browsers changes.
+                    </p>
+                    <p class="paragraph">
+                        There are disadvantages to this approach as well. If the content, layout, and functionality need
+                        to change greatly for different devices, it may not be such a good approach. Also, taking an
+                        existing site and adding responsiveness to it, to make it mobile/tablet friendly, can be a lot
+                        more effort than just creating a separate mobile site or app, especially if it is a sprawling
+                        enterprise site. Read more about responsive design advantages and disadvantages.
+                    </p>
+                    <a class="source"
+                        href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/responsive_design_building_blocks"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="JavaScript">
+                <header>
+                    <h2 class="section-header">
+                        JavaScript
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">
+                        JavaScript (JS) is a programming language mostly used to dynamically script webpages on the
+                        client side, but it is also often utilized on the server-side, using packages such as Node.js.
+                    </p>
+                    <p class="paragraph">JavaScript should not be confused with the Java programming language. Both
+                        "Java" and "JavaScript" are trademarks or registered trademarks of Oracle in the U.S. and other
+                        countries. However, the two programming languages are significantly different in their syntax,
+                        semantics, and uses.</p>
+                    <p class="paragraph">Conceived as a server-side language by Brendan Eich (then employed by the
+                        Netscape Corporation), JavaScript soon came to Netscape Navigator 2.0 in September 1995.
+                        JavaScript enjoyed immediate success and Internet Explorer 3.0 introduced JavaScript support
+                        under the name JScript in August 1996.</p>
+                    <p class="paragraph">In November 1996, Netscape began working with ECMA International to make
+                        JavaScript an industry standard. Since then, the standardized JavaScript is called ECMAScript
+                        and specified under ECMA-262, whose latest (nine, ES2018) edition is available in June 2018.</p>
+                    <p class="paragraph">JavaScript is mostly used in the browser, enabling developers to manipulate
+                        webpage content through the DOM, manipulate data with AJAX and IndexedDB, draw graphics with
+                        canvas, interact with the device running the browser through various APIs, and so forth.
+                        JavaScript is one of the world's most commonly-used languages, owing to the recent growth and
+                        performance improvement of APIs available in browsers.</p>
+                    <p class="paragraph">Recently, JavaScript's popularity has expanded even further through the
+                        successful Node.js platform - the most popular cross-platform JavaScript runtime environment
+                        outside the browser. Node.js allows developers to use JavaScript as a scripting language to
+                        automate things on a PC and build fully functional HTTP and Web Sockets servers.</p>
+                    <p class="paragraph">
+                        Below is a javaScript array that contains the hexadecimal representations for the colors used
+                        to decorate this page.
+                    </p>
+                    <code class="code-block">
+                            const palette = [
+                            "#ef5777", "#575fcf", "#4bcffa", "#34e7e4", "#0be881",
+                            "#f53b57", "#3c40c6", "#0fbcf9", "#00d8d6", "#05c46b",
+                            "#ffc048", "#ffdd59", "#ff5e57", "#d2dae2", "#485460",
+                            "#ffa801", "#ffd32a", "#ff3f34", "#808e9b", "#1e272e"
+                        ]                        
+                    </code>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Glossary/JavaScript"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Package_Managers">
+                <header>
+                    <h2 class="section-header">
+                        Package Managers
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">A package manager or package-management system is a collection of software
+                        tools that automates the process of installing, upgrading, configuring, and removing computer
+                        programs for a computer's operating system in a consistent manner.[1]</p>
+                    <p class="paragraph">A package manager deals with packages, distributions of software and data in
+                        archive files. Packages contain metadata, such as the software's name, description of its
+                        purpose, version number, vendor, checksum, and a list of dependencies necessary for the software
+                        to run properly. Upon installation, metadata is stored in a local package database. Package
+                        managers typically maintain a database of software dependencies and version information to
+                        prevent software mismatches and missing prerequisites. They work closely with software
+                        repositories, binary repository managers, and app stores.</p>
+                    <p class="paragraph">Package managers are designed to eliminate the need for manual installs and
+                        updates. This can be particularly useful for large enterprises whose operating systems are based
+                        on Linux and other Unix-like systems, typically consisting of hundreds or even tens of thousands
+                        of distinct software packages.[2]</p>
+                    <p class="paragraph">npm (originally short for Node Package Manager)[3] is a package manager for the
+                        JavaScript programming language. It is the default package manager for the JavaScript runtime
+                        environment Node.js. It consists of a command line client, also called npm, and an online
+                        database of public and paid-for private packages, called the npm registry. The registry is
+                        accessed via the client, and the available packages can be browsed and searched via the npm
+                        website. The package manager and the registry are managed by npm, Inc.</p>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Glossary/HTML"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="CSS_Pre-processors">
+                <header>
+                    <h2 class="section-header">
+                        CSS Pre-processors
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">In computer science, a preprocessor is a program that processes its input data
+                        to produce output that is used as input to another program. The output is said to be a
+                        preprocessed form of the input data, which is often used by some subsequent programs like
+                        compilers. The amount and kind of processing done depends on the nature of the preprocessor;
+                        some preprocessors are only capable of performing relatively simple textual substitutions and
+                        macro expansions, while others have the power of full-fledged programming languages.</p>
+                    <p class="paragraph">A common example from computer programming is the processing performed on
+                        source code before the next step of compilation. In some computer languages (e.g., C and PL/I)
+                        there is a phase of translation known as preprocessing. It can also include macro processing,
+                        file inclusion and language extensions.</p>
+                    <p class="paragraph">A CSS preprocessor is a program that lets you generate CSS from the
+                        preprocessor's own unique syntax. There are many CSS preprocessors to choose from, however most
+                        CSS preprocessors will add some features that don't exist in pure CSS, such as mixin, nesting
+                        selector, inheritance selector, and so on. These features make the CSS structure more readable
+                        and easier to maintain.
+                        To use a CSS preprocessor, you must install a CSS compiler on your web server.</p>
+                    <p class="paragraph">
+                        Below is how a variable would be declared using the SASS preprocessor
+                    </p>
+                    <code class="code-block">
+                        $default-color:#999;
+                    </code>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Glossary/CSS_preprocessor"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="CSS_Frameworks">
+                <header>
+                    <h2 class="section-header">
+                        CSS Frameworks
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">In computer programming, a software framework is an abstraction in which
+                        software providing generic functionality can be selectively changed by additional user-written
+                        code, thus providing application-specific software. A software framework provides a standard way
+                        to build and deploy applications. A software framework is a universal, reusable software
+                        environment that provides particular functionality as part of a larger software platform to
+                        facilitate development of software applications, products and solutions. Software frameworks may
+                        include support programs, compilers, code libraries, tool sets, and application programming
+                        interfaces (APIs) that bring together all the different components to enable development of a
+                        project or system.
+                    </p>
+                    <p class="paragraph">
+                        Frameworks have key distinguishing features that separate them from normal libraries:
+                    </p>
+                    <ul class="list">
+                        <li>inversion of control: In a framework, unlike in libraries or in standard user applications,
+                            the
+                            overall program's flow of control is not dictated by the caller, but by the framework.[1]
+                        </li>
+                        <li>
+                            extensibility: A user can extend the framework – usually by selective overriding – or
+                            programmers can add specialized user code to provide specific functionality.</li>
+                        <li>non-modifiable framework code: The framework code, in general, is not supposed to be
+                            modified,
+                            while accepting user-implemented extensions. In other words, users can extend the framework,
+                            but
+                            cannot modify its code.</li>
+                    </ul>
+
+                    <p class="paragraph">
+                        A CSS framework is a software framework that is meant to allow for easier, more
+                        standards-compliant web design using the Cascading Style Sheets language. Most of these
+                        frameworks contain at least a grid. More functional frameworks also come with more features and
+                        additional JavaScript based functions, but are mostly design oriented and unobtrusive. This
+                        differentiates these from functional and full JavaScript frameworks.
+                    </p>
+                    <p class="paragraph">
+                        Two notable and widely used examples are Bootstrap and Foundation.
+                    </p>
+                    <p class="paragraph">
+                        CSS frameworks offer different modules and tools:
+                    </p>
+                    <ul class="list">
+                        <li>reset style sheet</li>
+                        <li>grid especially for responsive web design</li>
+                        <li>web typography</li>
+                        <li>set of icons in sprites or icon fonts</li>
+                        <li>styling for tooltips, buttons, elements of forms</li>
+                        <li>parts of graphical user interfaces like accordion, tabs, slideshow or modal windows
+                            (Lightbox)</li>
+                        <li>equalizer to create equal height content</li>
+                        <li>often used CSS helper classes (left, hide)</li>
+                        <li>Bigger frameworks use a CSS interpreter like Less or Sass.</li>
+                    </ul>
+                    <a class="source" href="https://en.wikipedia.org/wiki/CSS_framework" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="CSS_Architecture">
+                <header>
+                    <h2 class="section-header">
+                        CSS Architecture
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">In computer engineering, computer architecture is a set of rules and methods
+                        that describe the functionality, organization, and implementation of computer systems. Some
+                        definitions of architecture define it as describing the capabilities and programming model of a
+                        computer but not a particular implementation.[1] In other definitions computer architecture
+                        involves instruction set architecture design, microarchitecture design, logic design, and
+                        implementation.[2]</p>
+                    <a class="source"
+                        href="https://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403">Source</a>
+                    <p class="paragraph">BEM stands for Block Element Modifier. It suggests a structured way of naming
+                        your classes, based on properties of the element in question. If you’ve ever seen a class name
+                        like header__form—email that’s BEM in action. When using the BEM methodology, keep note that we
+                        will be using only class names (not IDs). Class names allow you to repeat the BEM name if
+                        necessary, and create a more consistent coding structure (both on in the HTML and CSS/Sass
+                        files).</p>
+                    <a class="source" href="https://en.wikipedia.org/wiki/Computer_architecture"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Build_Tools">
+                <header>
+                    <h2 class="section-header">
+                        Build Tools
+                    </h2>
+                </header>
+                <div class="text-box">
+                    <h3 class="subsection-header">Module Bundlers</h3>
+
+                    <p class="paragraph">Most folks consider modules, dependency management and dynamic loading a basic
+                        requirement for any modern programming language—these are some of the most important features
+                        added to JavaScript in 2015.
+
+                        Modules are used extensively in Node but our focus here will be on how we can use modules inside
+                        of the browser. We’ll explore a little history, navigate through the hazardous current landscape
+                        with the end goal of having a clear path forward and appreciation for the most important module
+                        bundlers for JavaScript today: Browserify, Webpack and jspm.
+
+                        Finally we’ll look at how to use these tools with transpilers like CoffeeScript, TypeScript and
+                        Babel.</p>
+                    <p class="paragraph">
+                        We can import a module into our local scope and use it:
+                    </p>
+                    <code class="code-block">
+                            import $ from 'jquery';
+
+                            $(function() { ... });
+                    </code>
+
+                    <a class="source" href="https://www.sitepoint.com/javascript-modules-bundling-transpiling/"
+                        target="_blank">Source</a>
+                    <h3 class="subsection-header">Task Runners</h3>
+
+                    <p class="paragraph">A task runner is exactly what it sounds like, a program that can execute
+                        tasks
+                        based on specific criteria. Common usages are to set up a task that runs everytime a certain
+                        file is changed (or group of files) so you don't have to explicitly recompile every time, or
+                        to
+                        restart a server every time you restart the database.
+
+                        Gulp.js is used mostly for node/javaScript related tasks and there is a huge library of
+                        pre-built tasks that can do all kinds of stuff with your code.</p>
+                    <a class="source" href="https://www.quora.com/What-is-task-runner">Source</a>
+                    <h3 class="subsection-header">Linters and Formatters</h3>
+
+                    <p class="paragraph">Code linting is an important thing to have incorporated in your project
+                        because
+                        it is a way to increase the code quality. Linting consists of checking a source code for
+                        programmatic and stylistic errors. In addition, you are saving time by formatting your
+                        javascript code with some automatic tools. Let’s dive a bit deeper!</p>
+                    <a class="source"
+                        href="https://www.gistia.com/javascript-linters-formatter-prettier-eslint/">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Pick_a_Framework">
+                <header>
+                    <h2 class="section-header">
+                        Pick a Framework
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">A web framework (WF) or web application framework (WAF) is a software framework
+                        that is designed to support the development of web applications including web services, web
+                        resources, and web APIs. Web frameworks provide a standard way to build and deploy web
+                        applications on the World Wide Web. Web frameworks aim to automate the overhead associated with
+                        common activities performed in web development. For example, many web frameworks provide
+                        libraries for database access, templating frameworks, and session management, and they often
+                        promote code reuse.[1] Although they often target development of dynamic web sites, they are
+                        also applicable to static websites.</p>
+                    <a class="source" href="https://en.wikipedia.org/wiki/Web_framework" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="CSS_in_JS">
+                <header>
+                    <h2 class="section-header">
+                        CSS in JS
+                    </h2>
+                </header>
+                <div class="text-box">
+                    <h3 class="subsection-header">
+                        Styled Components
+                    </h3>
+
+                    <p class="paragraph">Styled Components are one of the new ways to use CSS in modern JavaScript. It
+                        is the meant to be a successor of CSS Modules, a way to write CSS that's scoped to a single
+                        component, and not leak to any other element in the page</p>
+                    <h3 class="subsection-header">
+                        CSS Modules
+                    </h3>
+                    <a class="source" href="https://css-tricks.com/css-modules-part-1-need/">Source</a>
+                    <p class="paragraph">CSS files in which all class names and animation names are scoped locally by
+                        default.
+
+                        So CSS Modules is not an official spec or an implementation in the browser but rather a process
+                        in a build step (with the help of Webpack or Browserify) that changes class names and selectors
+                        to be scoped (i.e. kinda like namespaced).</p>
+                    <a class="source" href="https://flaviocopes.com/styled-components/" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Testing_your_Apps">
+                <header>
+                    <h2 class="section-header">
+                        Testing your Apps
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">Testing a React component using Jest and Enzyme. Let’s imagine for a moment a
+                        framework that allows you to test React components in an easy and quick way. Also, imagine that
+                        it brings a coverage code report. And all this without the need to install any extra features.
+                        Who wouldn’t want something like this to test their code? Well, let me introduce you to the
+                        wonderful framework called Jest.</p>
+                    <p class="paragraph">Jest is a testing framework created by Facebook to test JavaScript code, in
+                        particular for React apps. But you must be wondering, why is it a good option to test your app
+                        using this framework? Let’s mention some of the incredible benefits Jest has, and that will
+                        definitely erase your concerns.
+
+                        Setup – It’s really easy to set up on your JavaScript solution.
+                        Configuration – Jest is already configured for “create-react-app” script. Just one command and
+                        you are ready to start coding your tests.
+                        Works with TypeScript – It works with any JavaScript compiler and also integrates with Babel and
+                        typescript.
+                        Good performance – Jest has the capability to run tests in parallel.
+                        Snapshots – Jest includes a snapshots feature to simplify your tests.
+                        Mocking library – Jest provides the ability to mock any function or component.
+                        Coverage report – Jest includes a useful coverage feature.</p>
+                    <p class="paragraph">Enzyme is a JavaScript testing utility created by Airbnb that makes it easy to
+                        assert, manipulate and traverse your React components outputs thanks to its great API.
+
+                        In other words, Jest and Enzyme are your best allies when you need to test a React application;
+                        so, let’s take a look at the power of Jest and Enzyme with an example.
+
+                        First of all, we need to create our React component to test it. Let’s create a simple component
+                        called “MyFirstComponent” (it’s a good practice to capitalize the first letter of the class)
+                        which will render a title and a button. The component will have a prop to set the title text and
+                        a state to control the button behavior. The title’s prop will be set as “Hello World” by
+                        default, and the state button will be set as “enable” by default. So you can click the button
+                        and once you press it, it will become disabled.</p>
+                    <a class="source"
+                        href="https://www.asapdevelopers.com/testing-a-react-web-app-using-jest-and-enzyme/"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Progressive_Web_Apps">
+                <header>
+                    <h2 class="section-header">
+                        Progressive Web Apps
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <p class="paragraph">Progressive web applications (PWAs) are a type of mobile app delivered through
+                        the web, built using common web technologies including HTML, CSS and JavaScript. They are
+                        intended to work on any platform that uses a standards-compliant browser. Functionality includes
+                        working offline, push notifications, and device hardware access, enabling creating user
+                        experiences similar to native applications on mobile devices. Since they are a type of webpage
+                        or website known as a web application, there is no requirement for developers or users to
+                        install the web apps via digital distribution systems like Apple App Store or Google Play.
+                    </p>
+                    <p class="paragraph">
+                        While web applications have been available for mobile devices for as long as mobile devices have
+                        existed, they had generally lagged behind native apps in terms of speed, features, and user
+                        adoption, especially on mobile devices. Direct access to hardware and the ability to work
+                        offline, previously only available to native apps, allows PWAs to perform much faster and to
+                        provide more features in line with native apps.
+                    </p>
+                    <p class="paragraph">
+                        PWAs do not require separate bundling or distribution. Publication of a progressive web app is
+                        as it would be for any other web page. PWAs work in any browser, but "app-like" features such as
+                        being independent of connectivity, install to home screen and push messaging depend on browser
+                        support. As of April 2018, those features are supported to varying degrees by the Microsoft
+                        Edge, Google Chrome, Mozilla Firefox and Apple Safari browsers, but more browsers may support
+                        the features needed in the future.
+                    </p>
+                    <a class="source" href="https://en.wikipedia.org/wiki/Progressive_web_applications0"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Type_Checkers">
+                <header>
+                    <h2 class="section-header">
+                        Type Checkers
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <h3 class="subsection-header">
+                        TypeScript
+                    </h3>
+                    <p class="paragraph">TypeScript is an open-source programming language developed and maintained by
+                        Microsoft. It is a strict syntactical superset of JavaScript, and adds optional static typing to
+                        the language.
+                    </p>
+                    <p class="paragraph">
+                        TypeScript is designed for development of large applications and transcompiles to JavaScript.[5]
+                        As TypeScript is a superset of JavaScript, existing JavaScript programs are also valid
+                        TypeScript programs. TypeScript may be used to develop JavaScript applications for both
+                        client-side and server-side (Node.js) execution.</p>
+                    <p class="paragraph"> There are multiple options available for transcompilation. Either the default
+                        TypeScript Checker
+                        can be used,[6] or the Babel compiler can be invoked to convert TypeScript to JavaScript.[7]</p>
+                    <p class="paragraph">
+                        TypeScript supports definition files that can contain type information of existing JavaScript
+                        libraries, much like C++ header files can describe the structure of existing object files. This
+                        enables other programs to use the values defined in the files as if they were statically typed
+                        TypeScript entities. There are third-party header files for popular libraries such as jQuery,
+                        MongoDB, and D3.js. TypeScript headers for the Node.js basic modules are also available,
+                        allowing development of Node.js programs within TypeScript.[8]</p>
+                    <p class="paragraph">
+
+                        The TypeScript compiler is itself written in TypeScript and compiled to JavaScript. It is
+                        licensed under the Apache 2.0 License.</p>
+                    <p class="paragraph">
+                        TypeScript is included as a first-class programming language in Microsoft Visual Studio 2013
+                        Update 2 and later, beside C# and other Microsoft languages.[9] An official extension allows
+                        Visual Studio 2012 to support TypeScript as well.[10]</p>
+                    <p class="paragraph">
+                        Anders Hejlsberg, lead architect of C# and creator of Delphi and Turbo Pascal, has worked on the
+                        development of TypeScript.</p>
+
+
+
+
+
+
+                    <a class="source" href="https://en.wikipedia.org/wiki/TypeScript" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Server_Side_Rendering">
+                <header>
+                    <h2 class="section-header">
+                        Server Side Rendering
+                    </h2>
+                </header>
+                <div class="text-box">
+
+
+                    <p class="paragraph">Let’s have a closer look at the feature that allows you to build universal
+                        applications with React.
+
+                        Server-Side Rendering — SSR from here on — is the ability of a front-end framework to render
+                        markup while running on a back-end system.
+
+                        Applications that have the ability to render both on the server and on the client are called
+                        universal apps.</p>
+                    <a class="source"
+                        href="https://www.freecodecamp.org/news/demystifying-reacts-server-side-render-de335d408fe4/"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Static_Site_Generators">
+                <header>
+                    <h2 class="section-header">
+                        Static Site Generators
+                    </h2>
+                </header>
+                <div class="text-box">
+                    <p class="paragraph">Generates all the pages of the website once when there’s actually changes to
+                        the site. This means there’s no moving parts in the deployed website. Caching gets much easier,
+                        performance goes up and static sites are far more secure.</p>
+                    <h3 class="subsection-header">
+                        Examples
+                    </h3>
+                    <ul class="list">
+                        <li>Hugo</li>
+                        <li>Next.js</li>
+                        <li>Gatsby</li>
+                        <li>VuePress</li>
+                        <li>Nuxt.js</li>
+                    </ul>
+
+                    <a class="source" href="https://www.sitepoint.com/static-site-generators/"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Desktop_Applications">
+                <header>
+                    <h2 class="section-header">
+                        Desktop Applications
+                    </h2>
+                </header>
+                <div class="text-box">
+
+                    <h3 class="subsection-header">
+                        Electron
+                    </h3>
+                    <p class="paragraph">
+                        Electron is a framework for cross-platform desktop applications using Chromium and Node.js.
+
+                        It’s easy to build cross-platform apps using HTML, CSS, and JavaScript. Your app will be
+                        compatible with Mac, Windows, and Linux operating systems right out of the box.
+
+                        Other in-built features are:
+
+                    </p>
+                    <ul class="list">
+                        <li>Automatic updates — enable apps to automatically update themselves</li>
+                        <li>Native menus and notifications — creates native application menus and context menus</li>
+                        <li>App crash reporting — you can submit crash reports to a remote server</li>
+                        <li>Debugging and profiling — Chromium’s content module finds performance bottlenecks and
+                            slow
+                            operations. You can also use your favorite Chrome Developer Tools within your app.</li>
+                        <li>Windows installer — you can create install packages. Fast and simple.</li>
+                    </ul>
+                    <a class="source"
+                        href="https://www.freecodecamp.org/news/how-to-build-your-first-app-with-electron-41ebdb796930/"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Mobile_Applications">
+                <header>
+                    <h2 class="section-header">
+                        Mobile Applications
+                    </h2>
+                </header>
+                <div class="text-box">
+
+
+                    <p class="paragraph">A mobile app or mobile application is a computer program or software
+                        application designed to run on a mobile device such as a phone/tablet or watch. Apps were
+                        originally intended for productivity assistance such as Email, calendar, and contact databases,
+                        but the public demand for apps caused rapid expansion into other areas such as mobile games,
+                        factory automation, GPS and location-based services, order-tracking, and ticket purchases, so
+                        that there are now millions of apps available. Apps are generally downloaded from application
+                        distribution platforms which are operated by the owner of the mobile operating system, such as
+                        the App Store (iOS) or Google Play Store. Some apps are free, and others have a price, with the
+                        profit being split between the application's creator and the distribution platform. Mobile
+                        applications often stand in contrast to desktop applications which are designed to run on
+                        desktop computers, and web applications which run in mobile web browsers rather than directly on
+                        the mobile device.</p>
+                    <p class="paragraph">
+                        In 2009, technology columnist David Pogue said that newer smartphones could be nicknamed "app
+                        phones" to distinguish them from earlier less-sophisticated smartphones.[1] The term "app",
+                        short for "software application", has since become very popular; in 2010, it was listed as "Word
+                        of the Year" by the American Dialect Society.
+                    </p>
+                    <a class="source" href="https://en.wikipedia.org/wiki/Mobile_app" target="_blank">Source</a>
+                </div>
+            </section>
+            <section class="main-section" id="Web_Assembly">
+                <header>
+                    <h2 class="section-header">
+                        Web Assembly
+                    </h2>
+                </header>
+                <div class="text-box">
+
+
+                    <p class="paragraph">WebAssembly (often shortened to Wasm) is a set of standards that define a
+                        portable (modular) binary format and a corresponding language similar to the assembler language
+                        (Assembly) for executable program and environment-specific program interfaces into which it may
+                        be embedded and interact with.[1][2] It was initially developed to improve performance of the
+                        JavaScript applications and to be used inside Web browsers, but it is not constrained to them
+                        only and can be embedded anywhere else.</p>
+                    <p class="paragraph">Wasm does not replace JavaScript. It utilizes the Emscripten compiler to
+                        compile C++ (or another input language) source code into a binary file which runs in the same
+                        sandbox as regular JavaScript code, though as of 2019 it still does not have full DOM access.
+                        Emscripten provides bindings for several commonly used environment interfaces like WebGL.</p>
+                    <p class="paragraph">The World Wide Web Consortium (W3C) maintains the standard with contributions
+                        from Mozilla, Microsoft, Google, and Apple.</p>
+                    <p class="paragraph">Here is some sample code from wikipedia</p>
+                    <code class="code-block">
+                                (module
+                                (import "math" "exp" (func $exp (param f64) (result f64)))
+                                (func (export "doubleExp") (param $0 f64) (result f64)
+                                  (f64.mul
+                                    (call $exp
+                                      (get_local $0)
+                                    )
+                                    (f64.const 2)
+                                  )
+                                )
+                              )
+                        </code>
+                    <a class="source" href="https://developer.mozilla.org/en-US/docs/Glossary/HTML"
+                        target="_blank">Source</a>
+                </div>
+            </section>
+
+
+        </main>
+    </div>
+
+</body>
+<script src="js/script.js"></script>
+
+</html>
